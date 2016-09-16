@@ -1,11 +1,12 @@
 ﻿using Autodesk.AutoCAD.Runtime;
 using Autodesk.Civil.ApplicationServices;
+using Autodesk.AutoCAD.ApplicationServices;
 
 namespace DrawingSettings
 {
     public class DrawingSettings
     {
-        [CommandMethod("Setds")]
+        [CommandMethod("SetDrawingSetting")]
         public void Setds()
         {
             // Получаем доступ к чертежу
@@ -49,6 +50,9 @@ namespace DrawingSettings
             doc.Settings.DrawingSettings.AmbientSettings.Station.Unit.Value = Autodesk.Civil.LinearUnitType.Meter;
             doc.Settings.DrawingSettings.AmbientSettings.Acceleration.Unit.Value = Autodesk.Civil.AccelerationUnitType.MeterPerSecSquared;
             doc.Settings.DrawingSettings.AmbientSettings.Pressure.Unit.Value = Autodesk.Civil.PressureUnitType.Kilopascal;
+
+            // Выводим сообщение, что все ок
+            Application.ShowAlertDialog("Настройки изменены");
             
         }
 
